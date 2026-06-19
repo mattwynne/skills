@@ -14,3 +14,11 @@ A small collection of reusable agent skills.
 - `distill-design-heuristics` — turn real team design judgment into reusable heuristics.
 
 Each skill lives in `skills/<skill-name>/SKILL.md`.
+
+## Prompt templates
+
+Thin Pi prompt wrappers live in `prompts/`:
+
+- `/ensemble-review <review request>` — loads the `ensemble-review` skill for a specific review.
+- `/kaizen-note [context]` — loads the `kaizen-note` skill to capture a workflow/tooling observation.
+- `/kaizen-fix [note path, title, or slug]` — loads the `kaizen-fix` skill to resolve a kaizen note.
