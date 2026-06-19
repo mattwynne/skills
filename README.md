@@ -11,5 +11,6 @@ A small collection of reusable agent skills.
 - `bdd-formulation` — write or review Gherkin scenarios as living documentation.
 - `ubiquitous-language` — review a codebase's domain vocabulary and produce a glossary.
 - `exploratory-testing` — run chartered exploratory testing and report findings.
+- `distill-design-heuristics` — turn real team design judgment into reusable heuristics.
 
 Each skill lives in `skills/<skill-name>/SKILL.md`.
