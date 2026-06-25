@@ -6,6 +6,7 @@ A small collection of reusable agent skills.
 
 - `kaizen-note` — capture workflow/tooling friction as a factual improvement note.
 - `kaizen-fix` — investigate and resolve `docs/kaizen` notes.
+- `kaizen-jfdi` — capture a kaizen note and immediately run the fix workflow in one loop.
 - `ensemble-review` — run independent Claude/Codex/Gemini reviews and synthesize the findings.
 - `bdd-discovery` — explore behaviour, rules, examples, questions, and scope before writing Gherkin.
 - `bdd-formulation` — write or review Gherkin scenarios as living documentation.
@@ -22,3 +23,4 @@ Thin Pi prompt wrappers live in `prompts/`:
 - `/ensemble-review <review request>` — loads the `ensemble-review` skill for a specific review.
 - `/kaizen-note [context]` — loads the `kaizen-note` skill to capture a workflow/tooling observation.
 - `/kaizen-fix [note path, title, or slug]` — loads the `kaizen-fix` skill to resolve a kaizen note.
+- `/kaizen-jfdi [problem context or note path]` — loads the `kaizen-jfdi` skill to capture and resolve a kaizen issue in one pass.
