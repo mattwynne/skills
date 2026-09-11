@@ -13,6 +13,7 @@ A small collection of reusable agent skills.
 - `ubiquitous-language` — review a codebase's domain vocabulary and produce a glossary.
 - `exploratory-testing` — run chartered exploratory testing and report findings.
 - `distill-design-heuristics` — turn real team design judgment into reusable heuristics.
+- `writing-adrs` — think through architectural decisions with stakeholders, then document and review the trade-offs. Contributed by Zell Gagnon.
 
 Each skill lives in `skills/<skill-name>/SKILL.md`.
 
