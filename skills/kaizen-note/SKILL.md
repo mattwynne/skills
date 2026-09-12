@@ -59,10 +59,19 @@ Usually not candidates:
 3. Identify the suspected system weakness without over-investigating:
    - What kind of protection was missing or weak? Examples: guardrail, validation, error message, default, documentation, checklist, handoff, recovery path, observability, or ownership boundary.
    - How urgent is it? Examples: minor friction, repeated friction, blocked work, quality risk, or customer risk.
-4. Choose a concise slug and create:
+4. Check for an existing note about the same symptom or problem before creating a new file:
+   - list existing notes in `docs/kaizen/`;
+   - search note titles and bodies for the same symptom, failure mode, workflow, command, tool, skill, or handoff;
+   - prefer amending a matching note when the new evidence describes the same problem, even if the root cause is still uncertain.
+5. If a matching note exists, update that note instead of creating a duplicate:
+   - add the new evidence under the most relevant existing heading, or add a dated subsection such as `### Additional observation: YYYY-MM-DD`;
+   - preserve the original observation and distinguish earlier evidence from the new observation;
+   - update `Impact`, `What allowed it to happen`, `Open questions`, or `Possible prevention ideas` only when the new observation changes them;
+   - do not rewrite the note into a solution plan unless the user asks.
+6. If no matching note exists, choose a concise slug and create:
    - `docs/kaizen/YYYY-MM-DD-short-observation-slug.md`
-5. Keep the note factual and diagnostic.
-6. Commit the note once written. Do not include unrelated working-tree changes.
+7. Keep the note factual and diagnostic.
+8. Commit the note once written. Do not include unrelated working-tree changes.
 
 ## Note Template
 
@@ -110,7 +119,7 @@ What risk or waste does this create for future delivery?
 - Optional, only when obvious from the evidence: guardrails, preflight checks, clearer errors, safer defaults, templates, scripts, tests, prompt changes, documentation changes, or other changes that could make recurrence impossible, obvious, or easy to recover from.
 ```
 
-Use additional headings when the evidence calls for them, but prefer a short useful note over a comprehensive report.
+Use additional headings when the evidence calls for them, but prefer a short useful note over a comprehensive report. When amending an existing note, use dated `Additional observation` subsections where they make the accumulation of evidence clearer.
 
 ## Style
 
