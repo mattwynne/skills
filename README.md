@@ -14,8 +14,13 @@ A small collection of reusable agent skills.
 - `exploratory-testing` — run chartered exploratory testing and report findings.
 - `distill-design-heuristics` — turn real team design judgment into reusable heuristics.
 - `writing-adrs` — think through architectural decisions with stakeholders, then document and review the trade-offs. Contributed by Zell Gagnon.
+- `writing-prose` — revise prose for clarity, force, and reader-centered style.
 
-Each skill lives in `skills/<skill-name>/SKILL.md`.
+Each skill lives in `skills/<skill-name>/SKILL.md`. To use `writing-prose` globally in Pi:
+
+```sh
+ln -s ~/git/mattwynne/skills/skills/writing-prose ~/.pi/agent/skills/writing-prose
+```
 
 ## Prompt templates
 
