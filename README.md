@@ -1,38 +1,63 @@
 # Skills
 
-A small collection of reusable agent skills.
+Reusable instructions for coding agents, covering testing, design, workflow improvements, and writing. Browse the skills below, then install the ones that suit your work.
 
 ## Included skills
 
-- `kaizen-note` — capture workflow/tooling friction as a factual improvement note.
-- `kaizen-fix` — investigate and resolve `docs/kaizen` notes.
-- `kaizen-jfdi` — capture a kaizen note and immediately run the fix workflow in one loop.
-- `ensemble-review` — run independent Claude/Codex/Gemini reviews and synthesize the findings.
-- `bdd-discovery` — explore behaviour, rules, examples, questions, and scope before writing Gherkin.
-- `bdd-formulation` — write or review Gherkin scenarios as living documentation.
-- `ubiquitous-language` — review a codebase's domain vocabulary and produce a glossary.
-- `exploratory-testing` — run chartered exploratory testing and report findings.
-- `distill-design-heuristics` — turn real team design judgment into reusable heuristics.
-- `writing-adrs` — think through architectural decisions with stakeholders, then document and review the trade-offs. Contributed by Zell Gagnon.
-- `writing-prose` — revise prose for clarity, force, and reader-centered style.
-- `talking-to-humans` — explain work in plain, concrete language without assuming the reader shares the agent’s context.
+| Skill | Description |
+| --- | --- |
+| [kaizen-note](skills/kaizen-note/SKILL.md) | Record a problem with your workflow or tools so it can be investigated and fixed. |
+| [kaizen-fix](skills/kaizen-fix/SKILL.md) | Investigate and resolve improvement notes in `docs/kaizen`. |
+| [kaizen-jfdi](skills/kaizen-jfdi/SKILL.md) | Record a workflow problem and work through the fix straight away. |
+| [ensemble-review](skills/ensemble-review/SKILL.md) | Get independent reviews from Claude, Codex, and Gemini, then bring their findings together. |
+| [bdd-discovery](skills/bdd-discovery/SKILL.md) | Explore behaviour, rules, examples, open questions, and scope before writing Gherkin scenarios. |
+| [bdd-formulation](skills/bdd-formulation/SKILL.md) | Write or review Gherkin scenarios that document how the software should behave. |
+| [ubiquitous-language](skills/ubiquitous-language/SKILL.md) | Review the terms a codebase uses for its domain and produce a glossary. |
+| [exploratory-testing](skills/exploratory-testing/SKILL.md) | Explore the software with a clear testing goal and report what you find. |
+| [distill-design-heuristics](skills/distill-design-heuristics/SKILL.md) | Turn a team's real design decisions into practical guidelines for future work. |
+| [writing-adrs](skills/writing-adrs/SKILL.md) | Think through architectural decisions with the people involved, then document and review the trade-offs. Contributed by Zell Gagnon. |
+| [writing-prose](skills/writing-prose/SKILL.md) | Make prose clearer, more direct, and easier to read. |
+| [talking-to-humans](skills/talking-to-humans/SKILL.md) | Explain work in plain, concrete language without assuming the reader shares the agent’s context. |
 
-Each skill lives in `skills/<skill-name>/SKILL.md`. To use these skills globally in Pi:
+## Install skills
 
-```sh
-ln -s ~/git/mattwynne/skills/skills/writing-prose ~/.pi/agent/skills/writing-prose
-ln -s ~/git/mattwynne/skills/skills/talking-to-humans ~/.pi/agent/skills/talking-to-humans
+Each skill lives in `skills/<skill-name>/`. Install the whole directory, not just `SKILL.md`, so any supporting files are included.
+
+### Ask your agent
+
+Copy and paste this prompt into your coding agent:
+
+```text
+Browse https://github.com/mattwynne/skills and read the SKILL.md files in
+its skills directory. Give me a short summary of each skill, then ask
+which one or more I'd like to install. Wait for my choice before installing.
+
+Confirm which coding agent I use and whether I want the skills available
+in all projects or just the current project. Use that agent's supported
+skills location and install each selected skill's whole directory,
+including any supporting files. Ask before replacing an existing skill.
+Tell me what you installed, where it lives, and how to use it.
 ```
 
-## Evaluations
+### Install manually in Pi
 
-- [`talking-to-humans`](evals/talking-to-humans.md) — draft cases and a rubric for comparing responses with and without the skill.
+To make a skill available in all your Pi projects, link its directory into `~/.pi/agent/skills/`.
+
+If you've cloned this repo to `~/git/mattwynne/skills`, run the following. Replace `chosen-skill-name` with a name from the table, and repeat for each skill you want. Adjust the repo path if you cloned it elsewhere.
+
+```sh
+skill="chosen-skill-name"
+mkdir -p ~/.pi/agent/skills
+ln -s "$HOME/git/mattwynne/skills/skills/$skill" "$HOME/.pi/agent/skills/$skill"
+```
+
+Run `/reload` in Pi to pick up newly installed skills.
 
 ## Prompt templates
 
-Thin Pi prompt wrappers live in `prompts/`:
+The files in `prompts/` provide Pi commands for common tasks:
 
-- `/ensemble-review <review request>` — loads the `ensemble-review` skill for a specific review.
-- `/kaizen-note [context]` — loads the `kaizen-note` skill to capture a workflow/tooling observation.
-- `/kaizen-fix [note path, title, or slug]` — loads the `kaizen-fix` skill to resolve a kaizen note.
-- `/kaizen-jfdi [problem context or note path]` — loads the `kaizen-jfdi` skill to capture and resolve a kaizen issue in one pass.
+- `/ensemble-review <review request>` — loads [ensemble-review](skills/ensemble-review/SKILL.md) for a specific review.
+- `/kaizen-note [context]` — loads [kaizen-note](skills/kaizen-note/SKILL.md) to record a workflow or tooling problem.
+- `/kaizen-fix [note path, title, or slug]` — loads [kaizen-fix](skills/kaizen-fix/SKILL.md) to resolve an improvement note.
+- `/kaizen-jfdi [problem context or note path]` — loads [kaizen-jfdi](skills/kaizen-jfdi/SKILL.md) to record and fix a workflow problem in one pass.
