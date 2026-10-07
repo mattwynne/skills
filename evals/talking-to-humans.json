@@ -1,0 +1,127 @@
+{
+  "skill_name": "talking-to-humans",
+  "skill_path": "../skills/talking-to-humans",
+  "references": ["references/human-voice.md"],
+  "rubric": [
+    {"id": "shared-language", "text": "Uses ordinary words unless a technical term has been used by the human, is clearly established in their domain, or is necessary and briefly explained. The agent's own prior jargon does not count as shared vocabulary."},
+    {"id": "explicit-meaning", "text": "Names the relevant projects, files, or behavior clearly enough that the reader does not have to guess what is meant."},
+    {"id": "faithfulness", "text": "Preserves the essential supplied facts without inventing findings, decisions, or commitments."},
+    {"id": "reading-effort", "text": "Is easy to understand on the first read: no compressed labels hiding whole thoughts, needless explanations, or vague reassurance."},
+    {"id": "human-voice", "text": "Sounds like one person speaking to another, not an official notice or a headline; remains respectful without forced slang, jokes, or cheerfulness."}
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "name": "rename-handoff",
+      "prompt": "Context from prior work: The rename in the current repository is complete. Another project, capstone-project-starter, depends on this repository and has not been checked after the rename. Its .gitignore rules and folder paths written into its files might still refer to the old name; no incorrect paths have been confirmed. What to do about files or command arguments using the old name has not been decided. The human has used 'rename', 'repo', and '.gitignore', but not 'legacy aliases', 'state migration', or 'hardcoded folder mapping'.\n\nHuman request: Give me a short handoff: what's done, and what still needs attention?",
+      "expectations": [
+        "Says the rename is complete in the current repo.",
+        "Names capstone-project-starter and explains that it depends on the renamed repository.",
+        "Identifies that project's .gitignore and folder paths as unchecked possible references to the old name, not confirmed failures.",
+        "Mentions that handling files or command arguments using the old name remains undecided."
+      ],
+      "calibration": [
+        {
+          "id": "original-dense-sentence",
+          "response": "Compatibility follow-up: review the starter’s ignore rules and any hardcoded folder mapping. Legacy aliases and state migration remain unspecified.",
+          "expected_pass": false,
+          "must_fail": ["shared-language", "explicit-meaning", "reading-effort"]
+        },
+        {
+          "id": "good-rewrite",
+          "response": "The rename is done in this repo. I haven’t checked `capstone-project-starter`, which depends on it. Its `.gitignore` and folder paths may still use the old name. We also haven’t decided what to do about files or command arguments in that repo that use the old name.",
+          "expected_pass": true,
+          "must_fail": []
+        },
+        {
+          "id": "ordinary-but-vague",
+          "response": "The rename is done. The other project still needs a look, and the old stuff still needs sorting out.",
+          "expected_pass": false,
+          "must_fail": ["explicit-meaning"]
+        },
+        {
+          "id": "headline-fragments",
+          "response": "Rename complete. `capstone-project-starter` dependency checks pending. `.gitignore` and folder-path review outstanding. Old-name file and command-argument handling undecided.",
+          "expected_pass": false,
+          "must_fail": ["human-voice"]
+        },
+        {
+          "id": "clear-but-invented",
+          "response": "The rename is done in this repo. I checked `capstone-project-starter`, which depends on it: its `.gitignore` and folder paths all use the new name. Files and commands using the old name will keep working.",
+          "expected_pass": false,
+          "must_fail": ["faithfulness"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "plain-but-vague",
+      "prompt": "Context from prior work: The rename in the current repository is complete. capstone-project-starter depends on this repository and has not been checked after the rename. Its .gitignore and folder paths might still use the old name; no failures are confirmed. Handling files or command arguments using the old name remains undecided. The human has used 'rename', 'repo', and '.gitignore'.\n\nHuman request: Is this a clear handoff? Rewrite it if needed: 'The rename is done. The other project needs a look, and we still need to sort out the old stuff.'",
+      "expectations": [
+        "Replaces 'the other project' with capstone-project-starter and identifies the .gitignore and folder-path checks.",
+        "Explains 'old stuff' as files or command arguments using the old name.",
+        "Preserves uncertainty about the dependent project and the unresolved decision."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "shared-technical-language",
+      "prompt": "Context from prior work: The human said, 'We need backward-compatible CLI aliases. Did you add them?' You added an alias so tool old-name calls the same operation as tool new-name. Both commands passed their tests. Nothing else is relevant to this question.\n\nHuman request: Did you add the backward-compatible CLI alias, and does it pass the tests?",
+      "expectations": [
+        "Confirms the alias was added and both commands passed their tests.",
+        "Does not give an unnecessary beginner explanation of backward compatibility or CLI aliases.",
+        "If command names are included, preserves tool old-name and tool new-name exactly."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "agent-jargon-not-shared",
+      "prompt": "Context from prior work: The human asked, 'Can you make the renamed tool work with my existing files?' The agent replied, 'I'll address state migration and legacy aliases.' The human has not used or acknowledged those terms. The tool now reads existing files without the human having to change them. Support for commands using the old name has not been added; those commands currently fail.\n\nHuman request: What's working now, and what isn't?",
+      "expectations": [
+        "Says existing files work without changes.",
+        "Says commands using the old name still fail.",
+        "Explains these outcomes without relying on the agent's earlier 'state migration' or 'legacy aliases' as shared vocabulary."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "necessary-file-name",
+      "prompt": "Context from prior work: The human says they are new to Git. The .gitignore file lists files and folders Git should ignore. It still lists old-output/ instead of new-output/. You confirmed that generated files under new-output/ appear as untracked files; they have not been committed.\n\nHuman request: Why are these generated files showing up, and which file do I need to change?",
+      "expectations": [
+        "Names .gitignore and briefly explains what it does.",
+        "Explains that .gitignore needs to list new-output/ instead of old-output/.",
+        "Does not say the generated files have been committed."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "short-status",
+      "prompt": "Context from prior work: The rename is complete in the current repository and its tests passed. capstone-project-starter depends on that repository and has not been checked. No failure in that project has been confirmed.\n\nHuman request: Two sentences max: are we finished?",
+      "expectations": [
+        "Distinguishes completion and passing tests in the current repository from the unchecked capstone-project-starter project.",
+        "Names capstone-project-starter without claiming it is broken or that everything is finished.",
+        "Uses no more than two sentences."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "corporate-voice",
+      "prompt": "Context from prior work: The rename is complete in the current repository. Its tests passed. No action is needed from the human. The human prefers a straightforward update, not jokes or celebrations.\n\nHuman request: Make this update easier to read: 'Please be advised that the requested name change has now been completed. We would like to confirm that all tests have passed. No further action is required on your part.'",
+      "expectations": [
+        "Preserves the completed rename, passing tests, and lack of required action.",
+        "Removes the stiff official framing rather than just swapping individual words.",
+        "Does not overcorrect into forced friendliness, slang, or celebration."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "not-a-headline",
+      "prompt": "Context from prior work: In billing-service, the wait before retrying a failed request was changed from one second to five seconds. Tests passed. This change has not been deployed to production. The human has used 'retry delay', 'tests', and 'deploy'.\n\nHuman request: What's the update on billing-service?",
+      "expectations": [
+        "Names billing-service and states that the retry delay changed from one second to five seconds.",
+        "Says tests passed but the change has not been deployed to production.",
+        "Uses conversational sentences rather than headline fragments or terse labels such as 'Retry delay increased; production deployment pending.'"
+      ]
+    }
+  ]
+}

@@ -36,3 +36,15 @@ skills location and install each selected skill's whole directory,
 including any supporting files. Ask before replacing an existing skill.
 Tell me what you installed, where it lives, and how to use it.
 ```
+
+## Evaluations
+
+[Run a real-session comparison with Pi](evals/README.md): continue two copies of a recorded coding session, load the skill before one reply, and compare the results. The redacted session, case configuration, skill and references are included.
+
+With Bash, `jq`, Pi and model credentials:
+
+```sh
+./evals/replay-session.sh evals/memba-progress.json
+```
+
+[Supporting cases and a rubric](evals/talking-to-humans.md) cover particular language problems and grader calibration.
