@@ -23,8 +23,6 @@ Reusable instructions for coding agents, covering testing, design, workflow impr
 
 Each skill lives in `skills/<skill-name>/`. Install the whole directory, not just `SKILL.md`, so any supporting files are included.
 
-### Ask your agent
-
 Copy and paste this prompt into your coding agent:
 
 ```text
@@ -38,26 +36,3 @@ skills location and install each selected skill's whole directory,
 including any supporting files. Ask before replacing an existing skill.
 Tell me what you installed, where it lives, and how to use it.
 ```
-
-### Install manually in Pi
-
-To make a skill available in all your Pi projects, link its directory into `~/.pi/agent/skills/`.
-
-If you've cloned this repo to `~/git/mattwynne/skills`, run the following. Replace `chosen-skill-name` with a name from the table, and repeat for each skill you want. Adjust the repo path if you cloned it elsewhere.
-
-```sh
-skill="chosen-skill-name"
-mkdir -p ~/.pi/agent/skills
-ln -s "$HOME/git/mattwynne/skills/skills/$skill" "$HOME/.pi/agent/skills/$skill"
-```
-
-Run `/reload` in Pi to pick up newly installed skills.
-
-## Prompt templates
-
-The files in `prompts/` provide Pi commands for common tasks:
-
-- `/ensemble-review <review request>` — loads [ensemble-review](skills/ensemble-review/SKILL.md) for a specific review.
-- `/kaizen-note [context]` — loads [kaizen-note](skills/kaizen-note/SKILL.md) to record a workflow or tooling problem.
-- `/kaizen-fix [note path, title, or slug]` — loads [kaizen-fix](skills/kaizen-fix/SKILL.md) to resolve an improvement note.
-- `/kaizen-jfdi [problem context or note path]` — loads [kaizen-jfdi](skills/kaizen-jfdi/SKILL.md) to record and fix a workflow problem in one pass.
