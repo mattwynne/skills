@@ -1,0 +1,53 @@
+{
+  "fixture": "memba-progress.session.jsonl",
+  "sha256": "48d4114363153723f36d9fec02e61b68aa9f5ec4e6bef897b5464f53de664bc4",
+  "source_date": "2026-09-14",
+  "cutoff": "2e5d8d9a",
+  "withheld_reply": "5cd59679",
+  "entries": 358,
+  "native_messages": 345,
+  "bytes": 961479,
+  "replacements": [
+    {
+      "replacement": "00000000-0000-4000-8000-000000000001",
+      "occurrences": 1
+    },
+    {
+      "replacement": "00000000-0000-4000-8000-000000000002",
+      "occurrences": 1
+    },
+    {
+      "replacement": "00000000-0000-4000-8000-000000000003",
+      "occurrences": 1
+    },
+    {
+      "replacement": "00000000-0000-4000-8000-000000000004",
+      "occurrences": 1
+    },
+    {
+      "replacement": "`fixture-club-one`",
+      "occurrences": 15
+    },
+    {
+      "replacement": "`fixture-club-two`",
+      "occurrences": 30
+    },
+    {
+      "replacement": "`Verification Group`",
+      "occurrences": 29
+    },
+    {
+      "replacement": "`fixture-verification-group`",
+      "occurrences": 13
+    },
+    {
+      "replacement": "for fixture-club-one and fixture-club-two",
+      "occurrences": 2
+    }
+  ],
+  "provider_signature_fields_removed": 152,
+  "opaque_thinking_blocks_removed": 0,
+  "native_context_preserved_except_declared_redactions": true,
+  "comparison_model": "openai-codex/gpt-6.1-sol",
+  "thinking": "high"
+}

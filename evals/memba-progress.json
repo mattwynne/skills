@@ -1,0 +1,9 @@
+{
+  "session": "fixtures/memba-progress.session.jsonl",
+  "before": "5cd59679",
+  "skill": "../skills/talking-to-humans",
+  "references": ["references/human-voice.md"],
+  "prompt": "update on progress",
+  "model": "openai-codex/gpt-6.1-sol",
+  "cwd": ".."
+}

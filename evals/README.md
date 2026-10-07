@@ -4,18 +4,20 @@ Use Bash, `jq`, and Pi to continue two copies of a recorded session. One answers
 
 This is the main test for `talking-to-humans`. The [constructed cases and grader calibration](constructed-cases.md) are supporting checks, not a substitute for the real session.
 
-## Run Matt’s existing case
+## Run the bundled real-session case
 
-The private Memba case is saved locally, not committed:
+The redacted Memba log, case configuration, skill and references are all committed. From a checkout with Bash, `jq`, Pi and credentials for the chosen model:
 
 ```sh
-./evals/replay-session.sh evals/local/talking-to-humans-memba.json
+./evals/replay-session.sh evals/memba-progress.json
 ```
+
+No private session log, Memba checkout or globally installed skill is required. See [the fixture notes](fixtures/README.md) for its provenance and redactions. `MODEL=provider/model` selects another available model.
 
 To keep the results somewhere durable:
 
 ```sh
-./evals/replay-session.sh evals/local/talking-to-humans-memba.json evals/local/run-1
+./evals/replay-session.sh evals/memba-progress.json evals/local/run-1
 ```
 
 An existing output directory is refused. A run continues two sessions; reading the skill and references can require additional model turns. Long sessions consume API or subscription allowance even when replies are short.
@@ -93,13 +95,15 @@ One pair is evidence about that session, not a claim of universal improvement. R
 - `recorded-response.txt`: the original reply, withheld from both continuations; useful as a reference, not an equivalent same-model control.
 - `summary.json`: successful replay checks, with the readability verdict left unanswered.
 
-Results contain private conversations and may include credentials or other secrets present in the original log. Outputs use private filesystem permissions. `evals/local/` is ignored by Git; temporary outputs are also supported. Do not commit or share session logs without reviewing them.
+The bundled fixture has been reviewed and redacted for publication. Your own session logs and results may contain private conversations or secrets; review them before sharing. Outputs use private filesystem permissions. `evals/local/` is ignored by Git; temporary outputs are also supported. Unredacted originals, private redaction maps and generated results remain untracked.
 
 ## Test the plumbing without model calls
 
 ```sh
+./evals/test-fixture.sh
+./evals/test-fixture-guards.sh
 ./evals/test-session-replay.sh
 ./evals/test-runner.sh
 ```
 
-Fake-Pi tests deliberately break reads, history preservation, provider responses, and other invariants and require the runner to fail. They test the harness, not communication quality. The older runner additionally tests grader calibration.
+The offline fixture check uses `jq` and `shasum` (macOS) or `sha256sum` (Linux) to check the committed input and its integrity. Fake-Pi tests deliberately break reads, history preservation, provider responses, and other invariants and require the runner to fail. They test the harness, not communication quality. The older runner additionally tests grader calibration.
