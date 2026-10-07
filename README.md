@@ -26,7 +26,8 @@ ln -s ~/git/mattwynne/skills/skills/talking-to-humans ~/.pi/agent/skills/talking
 
 ## Evaluations
 
-- [`talking-to-humans`](evals/talking-to-humans.md) — draft cases and a rubric for comparing responses with and without the skill.
+- [`talking-to-humans`](evals/talking-to-humans.md) — cases and a rubric for comparing responses with and without the skill.
+- [Run evals with Pi](evals/README.md) — resume a real session, load the skill before one reply, and compare the results. Includes supporting constructed cases and grader checks.
 
 ## Prompt templates
 

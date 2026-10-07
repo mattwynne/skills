@@ -1,4 +1,4 @@
-# Talking to humans: evaluation draft
+# Talking to humans: supporting evaluation cases
 
 ## What we are testing
 
@@ -10,7 +10,11 @@ The tone checks draw on [Use the words normal people would use](https://gilest.o
 
 ## How to run
 
-This is a manual/model-judged eval specification, not an automated runner.
+Start with the [real-session replay](README.md): continue native Pi session copies, explicitly load the skill in one, and compare the replies yourself. This preserves the working context instead of reconstructing it from a written transcript.
+
+The cases below support that test. The machine-readable suite is `talking-to-humans.json`; it includes these seven cases plus a case checking headline-style language. The [supporting runner](constructed-cases.md) applies the rubric through an independent model judge and calibrates that judge against known failures. Its scores are not a verdict on whether the skill helps in practice.
+
+The steps below describe the manual comparison of these constructed cases.
 
 1. Run each case in a fresh conversation. Give the agent only the case’s **Context** and **Request**, not its checks or example answer. Context represents facts from prior work; it does not establish the human’s vocabulary unless explicitly stated.
 2. First run without this skill, then run again with `skills/talking-to-humans/SKILL.md` loaded. Keep the model, other instructions, and generation settings the same.
@@ -22,7 +26,7 @@ Also ask a human reader: **“What needs attention, and where?”** If their ans
 
 ## Rubric
 
-Each criterion is pass/fail. A case passes only when all five pass; do not average away a factual error.
+The supporting runner grades each criterion pass/fail and counts a constructed case as passing only when all checks pass. Inspect the individual judgments: that total can hide a readability improvement. For real-session comparisons, judge which reply is clearer and note factual problems separately; do not average away a factual error.
 
 | Criterion | Pass when… |
 |---|---|
