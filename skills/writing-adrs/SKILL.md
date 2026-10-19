@@ -27,7 +27,8 @@ may not have considered, and help them articulate the trade-offs.
 
 ### 1. Understand the landscape
 
-Read `docs/adrs/README.md` to scan the existing decisions.
+Find existing decisions in `docs/adrs/README.md`.
+Follow replacement links for superseded decisions.
 Read in detail any ADRs that relate to the current decision —
 does this amend, supersede, or build on something already
 recorded?
@@ -62,11 +63,19 @@ manage ADR files:
 1. Check `adrgen list` for the next available number.
 2. Run `adrgen create "Title"` to generate the file.
 3. Write the content (see principles below).
-4. Update `docs/adrs/README.md` to add the new entry.
+4. Update `docs/adrs/README.md` in the same PR: add one row
+   in number order with the ADR's relative link, title, status,
+   keywords (if present), and a one-sentence decision summary.
+   Keep rationale and detailed trade-offs in the ADR.
 
 If adrgen is not installed, create the file manually following
 the same numbered naming convention (e.g.
 `docs/adrs/0012-use-event-sourcing.md`).
+
+Keep the ledger current when editing an ADR's status or
+discovery metadata, not only when adding records. For supersession,
+retain the old row and link its replacement; show the relationship
+on the new row too. Preserve the original decision's reasoning.
 
 ### 4. Review the draft
 
@@ -81,6 +90,9 @@ the draft ADR *and* the existing ADRs in `docs/adrs/`.
   (amends, supersedes, builds on)?
 - Are relevant context links included (PRs, tickets,
   design docs)?
+- Does the ledger include every numbered ADR exactly once,
+  with metadata and summaries faithful to the source and
+  working relative links? Are replacement links current?
 
 Apply the coherence reviewer's fixes to the draft before
 continuing.
