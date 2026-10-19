@@ -15,7 +15,7 @@ Reusable instructions for coding agents, covering testing, design, workflow impr
 | [ubiquitous-language](skills/ubiquitous-language/SKILL.md) | Review the terms a codebase uses for its domain and produce a glossary. |
 | [exploratory-testing](skills/exploratory-testing/SKILL.md) | Explore the software with a clear testing goal and report what you find. |
 | [distill-design-heuristics](skills/distill-design-heuristics/SKILL.md) | Turn a team's real design decisions into practical guidelines for future work. |
-| [writing-adrs](skills/writing-adrs/SKILL.md) | Think through architectural decisions with the people involved, then document and review the trade-offs. Contributed by Zell Gagnon. |
+| [writing-adrs](skills/writing-adrs/SKILL.md) | Think through architectural decisions with the people involved, then document and review the trade-offs. |
 | [writing-prose](skills/writing-prose/SKILL.md) | Make prose clearer, more direct, and easier to read. |
 | [talking-to-humans](skills/talking-to-humans/SKILL.md) | Explain work in plain, concrete language without assuming the reader shares the agent’s context. |
 
