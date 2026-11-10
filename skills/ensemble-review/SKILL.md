@@ -11,7 +11,7 @@ The point is not to average opinions. The point is to reduce single-model blind 
 
 ## Workflow
 
-1. Create a temporary review directory under the system temp directory, named with an `ensemble-review-` or `pi-review-` prefix. Keep the path for the final answer.
+1. Create a temporary review directory under the system temp directory, named with an `ensemble-review-` prefix. Keep the path for the final answer.
 2. Dispatch three independent reviewers in parallel:
    - Gemini
    - Codex
