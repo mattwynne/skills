@@ -50,15 +50,15 @@ Rules:
 - End with a short "Top recommendations" section.
 ```
 
-## Suggested Pi Subagent Setup
+## Suggested Subagent Setup
 
-If the project has Pi subagents named `deep-review-gemini`, `deep-review-codex`, and `deep-review-claude`, use the `subagent` tool with `agentScope` set to `"both"` and `confirmProjectAgents` set to `false`.
+If this coding agent harness supports subagents, use that tooling to create each of the reviewers.
 
 Dispatch all three project-local agents in parallel with the reviewer task template above.
 
-## Suggested CLI Fallbacks
+If subagents are not available, use non-interactive CLI commands. Write the reviewer prompt to a temporary file first, then adapt these command shapes as needed:
 
-If project-local review agents are not available, use non-interactive CLI commands when installed. Write the reviewer prompt to a temporary file first, then adapt these command shapes as needed:
+Try using `pi` first, which can run with any model. If that's not available, you can use the vendors' own harnesses:
 
 ```bash
 claude -p --permission-mode dontAsk --tools Read,Grep,Glob < /tmp/ensemble-review-prompt.txt
