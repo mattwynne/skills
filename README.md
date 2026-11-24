@@ -10,6 +10,7 @@ Reusable instructions for coding agents, covering testing, design, workflow impr
 | [kaizen-fix](skills/kaizen-fix/SKILL.md) | Investigate and resolve improvement notes in `docs/kaizen`. |
 | [kaizen-jfdi](skills/kaizen-jfdi/SKILL.md) | Record a workflow problem and work through the fix straight away. |
 | [ensemble-review](skills/ensemble-review/SKILL.md) | Get independent reviews from Claude, Codex, and Gemini, then bring their findings together. |
+| [simplify](skills/simplify/SKILL.md) | Review code or writing changes to remove unnecessary complexity, duplication, or words. |
 | [bdd-discovery](skills/bdd-discovery/SKILL.md) | Explore behaviour, rules, examples, open questions, and scope before writing Gherkin scenarios. |
 | [bdd-formulation](skills/bdd-formulation/SKILL.md) | Write or review Gherkin scenarios that document how the software should behave. |
 | [ubiquitous-language](skills/ubiquitous-language/SKILL.md) | Review the terms a codebase uses for its domain and produce a glossary. |
